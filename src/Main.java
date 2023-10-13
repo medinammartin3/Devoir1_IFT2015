@@ -10,7 +10,7 @@ public class Main {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
             String line;
-            while ((line = reader.readLine()) != "hola") {
+            while ((line = reader.readLine()) != null) {
                 String[] splitLine = line.split(" ");
                 int longueur = Integer.parseInt(splitLine[0]);
                 int largeur = Integer.parseInt(splitLine[1]);
