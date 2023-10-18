@@ -43,7 +43,7 @@ public class Main {
         System.out.println();
         int i = 1;
         for(HiddenWord h : hiddenWords){
-            System.out.println("Query " + i + ":");
+            System.out.println("\n" + "Query " + i + ":");
             System.out.println(h.solve());
             ++i;
         }
