@@ -1,3 +1,7 @@
+//Auteurs:
+//Étienne Mitchell-Bouchard (20243430)
+//Martin Medina (20235219)
+
 import java.util.ArrayList;
 
 public class HiddenWord {
@@ -14,10 +18,6 @@ public class HiddenWord {
         this.words = words;
         this.paths = new ArrayList<>();
     }
-    public int getLength() {return this.length;}
-    public int getWidth() {return this.width;}
-    public char getCharAt(int x, int y) {return this.grid[x][y];}
-    public String[] getWords() {return this.words;}
 
     public String solve() {
         for(String word : this.words){

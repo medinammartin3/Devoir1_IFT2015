@@ -1,3 +1,7 @@
+//Auteurs:
+//Étienne Mitchell-Bouchard (20243430)
+//Martin Medina (20235219)
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,18 +37,18 @@ public class Main {
 
         int i = 1;
         for(HiddenWord h : hiddenWords){
-            System.out.println("\n" + "Query " + i + ":");
+            System.out.println("Query " + i + ":");
             System.out.println(h.solve());
-            System.out.println("Average time for query in ms: " + doBenchmarkInMs(h));
+            //System.out.println("Average time for query in ms: " + doBenchmarkInMs(h));
             ++i;
         }
     }
-    public static long doBenchmarkInMs(HiddenWord h){
-        int nbOfTimes = 10;
-        long startTime = System.nanoTime();
-        for(short n = 0; n < nbOfTimes; ++n)
-            h.solve();
-        long time = (System.nanoTime() - startTime) / nbOfTimes;
-        return time / 1000000;
-    }
+//    public static long doBenchmarkInMs(HiddenWord h){
+//        int nbOfTimes = 10;
+//        long startTime = System.nanoTime();
+//        for(short n = 0; n < nbOfTimes; ++n)
+//            h.solve();
+//        long time = (System.nanoTime() - startTime) / nbOfTimes;
+//        return time / 1000000;
+//    }
 }
