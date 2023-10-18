@@ -30,22 +30,21 @@ public class Main {
         } catch(IOException e) {
             e.printStackTrace();
         }
-        for(HiddenWord h : hiddenWords){
-            for(int i = 0; i < h.getLength(); ++i){
-                for(int j = 0; j < h.getWidth(); ++j)
-                    System.out.print(h.getCharAt(i, j) + " ");
-                System.out.println();
-            }
-            for(String word : h.getWords())
-                System.out.print(word + " ");
-            System.out.println();
-        }
-        System.out.println();
+
         int i = 1;
         for(HiddenWord h : hiddenWords){
             System.out.println("\n" + "Query " + i + ":");
             System.out.println(h.solve());
+            System.out.println("Average time for query in ms: " + doBenchmarkInMs(h));
             ++i;
         }
+    }
+    public static long doBenchmarkInMs(HiddenWord h){
+        int nbOfTimes = 10;
+        long startTime = System.nanoTime();
+        for(short n = 0; n < nbOfTimes; ++n)
+            h.solve();
+        long time = (System.nanoTime() - startTime) / nbOfTimes;
+        return time / 1000000;
     }
 }
