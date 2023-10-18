@@ -4,6 +4,8 @@
 
 import java.util.ArrayList;
 
+//Classe qui contient toutes les informations nécessaires à la résolution d'un mot caché
+//sous formes d'attributs. Elle contient aussi les méthodes nécessaires pour résoudre le mot caché.
 public class HiddenWord {
     private final int length;
     private final int width;
@@ -18,7 +20,9 @@ public class HiddenWord {
         this.words = words;
         this.paths = new ArrayList<>();
     }
-
+    //Fonction principale qui résoud le mot caché et qui retourne tout les Paths sous formes
+    //de String formatté pour print. Pour chacun des mots, elle parcours la grille et lance
+    //la fonction récursive findPositionOfNextLetter() lorsque la première lettre du mot est trouvé.
     public String solve() {
         for(String word : this.words){
             char firstLetter = word.charAt(0);
@@ -39,6 +43,10 @@ public class HiddenWord {
         }
         return String.join("\n", pathsToOutput);
     }
+    //Prend un Path en paramètre et trouve la position de la prochaine lettre dans le mot récursivement.
+    //Utilise "path" pour savoir à quelle lettre du mot et position dans la grille nous sommes rendus.
+    //Le path est updaté pour que la récursion reste correct, autant lorsqu'on s'enfonce que lorsqu'on remonte.
+    //Ajoute les Path trouvés dans l'attribut "paths" et ne retourne rien.
     public void findPositionOfNextLetter(Path path){
         if (path.getIndex() == path.getWordLength()){
             paths.add(path.copy());
@@ -55,6 +63,9 @@ public class HiddenWord {
         }
         path.removeLastPoint();
     }
+    //Prend un Point en paramètre et retourne tout ses voisins incluant le point-même,
+    //en tenant compte de la longueur et la largeur de la grille pour ne pas avoir des index
+    //qui sont out of bounds. Retourne les voisins sous-forme de ArrayList<Point>.
     public ArrayList<Point> getNeighborsOfPoint(Point pt){
         ArrayList<Point> points = new ArrayList<>();
         int x = pt.getX();

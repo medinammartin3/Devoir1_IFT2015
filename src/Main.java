@@ -11,30 +11,33 @@ import java.util.Arrays;
 public class Main {
     static ArrayList<HiddenWord> hiddenWords = new ArrayList<>();
     public static void main(String[] args) {
+        //Lit le contenu du fichier qui est pris en entrée et transforme celui-ci
+        //en une ArrayList de mots cachés.
         try {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] splitLine = line.split(" ");
-                int longueur = Integer.parseInt(splitLine[0]);
-                int largeur = Integer.parseInt(splitLine[1]);
-                char[][] grille = new char[longueur][largeur];
-                for (int i = 0; i < longueur; ++i){
+                int length = Integer.parseInt(splitLine[0]);
+                int width = Integer.parseInt(splitLine[1]);
+                char[][] grid = new char[length][width];
+                for (int i = 0; i < length; ++i){
                     String row = reader.readLine();
                     String[] rowSplit = row.split(" ");
-                    for(int j = 0; j < largeur; ++j){
-                        grille[i][j] = rowSplit[j].charAt(0);
+                    for(int j = 0; j < width; ++j){
+                        grid[i][j] = rowSplit[j].charAt(0);
                     }
                 }
-                String[] mots = reader.readLine().split(" ");
-                Arrays.sort(mots);
-                hiddenWords.add(new HiddenWord(longueur, largeur, grille, mots));
+                String[] words = reader.readLine().split(" ");
+                Arrays.sort(words);
+                hiddenWords.add(new HiddenWord(length, width, grid, words));
             }
 
         } catch(IOException e) {
             e.printStackTrace();
         }
-
+        //Boucle qui résoud tous les mots cachés et qui imprime le résultat de
+        //chaque résolution dans le format demandé.
         int i = 1;
         for(HiddenWord h : hiddenWords){
             System.out.println("Query " + i + ":");
