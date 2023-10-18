@@ -16,7 +16,7 @@ public class HiddenWord {
     }
     public int getLength() {return this.length;}
     public int getWidth() {return this.width;}
-    public char getCharAt(int x, int y){return this.grid[x][y];}
+    public char getCharAt(int x, int y) {return this.grid[x][y];}
     public String[] getWords() {return this.words;}
 
     public String solve() {
