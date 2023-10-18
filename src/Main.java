@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
-    static ArrayList<Crossword> crosswords = new ArrayList<Crossword>();
+    static ArrayList<HiddenWord> hiddenWords = new ArrayList<>();
     public static void main(String[] args) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
@@ -24,27 +24,27 @@ public class Main {
                 }
                 String[] mots = reader.readLine().split(" ");
                 Arrays.sort(mots);
-                crosswords.add(new Crossword(longueur, largeur, grille, mots));
+                hiddenWords.add(new HiddenWord(longueur, largeur, grille, mots));
             }
 
         } catch(IOException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
-        for(Crossword c : crosswords){
-            for(int i = 0; i < c.Longueur; ++i){
-                for(int j = 0; j < c.Largeur; ++j)
-                    System.out.print(c.Grille[i][j] + " ");
+        for(HiddenWord h : hiddenWords){
+            for(int i = 0; i < h.getLength(); ++i){
+                for(int j = 0; j < h.getWidth(); ++j)
+                    System.out.print(h.getCharAt(i, j) + " ");
                 System.out.println();
             }
-            for(String word : c.Mots)
+            for(String word : h.getWords())
                 System.out.print(word + " ");
             System.out.println();
         }
         System.out.println();
         int i = 1;
-        for(Crossword c : crosswords){
+        for(HiddenWord h : hiddenWords){
             System.out.println("Query " + i + ":");
-            System.out.println(c.Solve());
+            System.out.println(h.solve());
             ++i;
         }
     }

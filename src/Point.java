@@ -1,16 +1,16 @@
-import java.util.ArrayList;
 
 public class Point {
-    int X;
-    int Y;
+    private final int x;
+    private final int y;
     public Point(int x, int y) {
-        X = x;
-        Y = y;
+        this.x = x;
+        this.y = y;
     }
-
+    public int getX() {return this.x;}
+    public int getY() {return this.y;}
     @Override
     public String toString() {
-        return "(" + X + "," + Y + ")";
+        return "(" + this.x + "," + this.y + ")";
     }
 
 }
