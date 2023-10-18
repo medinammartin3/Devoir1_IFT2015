@@ -47,6 +47,11 @@ public class Main {
             System.out.println(c.Solve());
             ++i;
         }
+        Path yo = new Path("yo");
+        for(int test = 0; test < 5; ++test){
+            yo.addPoint(new Point(test, test));
+        }
+        System.out.println(yo);
 
     }
 }

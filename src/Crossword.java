@@ -5,6 +5,7 @@ public class Crossword {
     int Largeur;
     char[][] Grille;
     String[] Mots;
+    ArrayList<Path> paths;
 
     public Crossword(int longueur, int largeur, char[][] grille, String[] mots){
         Longueur = longueur;
