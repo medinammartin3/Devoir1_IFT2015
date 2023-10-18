@@ -12,33 +12,49 @@ public class Crossword {
         Largeur = largeur;
         Grille = grille;
         Mots = mots;
+        paths = new ArrayList<>();
     }
 
-    public String Solve() {
-        String total = "";
-        for(String word : Mots){
-            char firstLetter = word.charAt(0);
-            for(int i = 0; i < Longueur; ++i) {
-                for(int j = 0; j < Largeur; ++j){
-                    if (Grille[i][j] == firstLetter) {
-                        Point start = new Point(i, j);
-                        String s = word + " " + start + FindPositionOfNextLetter(start, word, 1);
-                        total += s + '\n';
-                    }
+    public void pathsForWord (String word){
+        char firstLetter = word.charAt(0);
+        for(int i = 0; i < Longueur; ++i) {
+            for(int j = 0; j < Largeur; ++j){
+                if (Grille[i][j] == firstLetter) {
+                    Point start = new Point(i, j);
+                    Path path = new Path(word);
+                    path.addPoint(start);
+                    FindPositionOfNextLetter(path, 1);
                 }
             }
         }
-        return total;
     }
-    public String FindPositionOfNextLetter(Point pt, String mot, int index){
-        if (index == mot.length())
-            return "";
 
-        for(Point neighbor: getNeighborOfPoint(pt)){
-            if (Grille[neighbor.X][neighbor.Y] == mot.charAt(index))
-                return "->" + neighbor + FindPositionOfNextLetter(neighbor, mot, ++index);
+    public String Solve() {
+        for(String word : Mots){
+            pathsForWord(word);
         }
-        return "";
+        ArrayList<String> pts = new ArrayList<>();
+        for(Path path : paths){
+            pts.add(path.toString());
+        }
+        return String.join("\n", pts);
+    }
+    public void FindPositionOfNextLetter(Path path, int index){
+        if (index == path.Word.length()){
+            paths.add(path);
+            path.pop();
+            --index;
+            return;
+        }
+        for(Point neighbor: getNeighborOfPoint(path.peek())){
+            if (Grille[neighbor.X][neighbor.Y] == path.Word.charAt(index)){
+                ++index;
+                path.addPoint(neighbor);
+                FindPositionOfNextLetter(path, index);
+
+            }
+        }
+
     }
     public ArrayList<Point> getNeighborOfPoint(Point pt){
         ArrayList<Point> points = new ArrayList<>();

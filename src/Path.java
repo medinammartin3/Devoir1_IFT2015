@@ -21,4 +21,12 @@ public class Path {
     public void addPoint(Point pt){
         pointPath.add(pt);
     }
+
+    public Point peek(){
+        return pointPath.peek();
+    }
+
+    public Point pop(){
+        return pointPath.pop();
+    }
 }
