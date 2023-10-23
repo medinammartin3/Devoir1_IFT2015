@@ -3,56 +3,42 @@
 //Martin Medina (20235219)
 
 import java.util.Stack;
-import java.util.ArrayList;
 
 //Classe qui permet de sauvegarder les chemins trouvés et gérer
 //la recherche récursive à l'aide d'un Stack.
 public class Path {
     private final Stack<Point> pointPath;
-    private final String word;
-    private int index;
+    private String word;
 
-    public Path(String word){
-        this.word = word;
+    public Path(){
+        this.word = "";
         this.pointPath = new Stack<>();
-        this.index = 0;
     }
     //Crée une copie du Path actuel ailleurs en mémoire pour le sauvegarder.
     public Path copy(){
-        Path newPath = new Path(this.word);
+        Path newPath = new Path();
+        newPath.setWord(this.word);
         for(Point p : this.pointPath){
             newPath.addPoint(p);
         }
         return newPath;
     }
-    //Pretty printer pour respecter le format demander.
+    //Pretty printer pour respecter le format demandé.
     public String toString() {
-        ArrayList<String> pts = new ArrayList<>();
+        Stack<String> pts = new Stack<>();
         for(Point pt : this.pointPath){
-            pts.add(pt.toString());
+            pts.push(pt.toString());
         }
         return this.word + " " + String.join("->", pts);
     }
-
-    public void addPoint(Point pt){
-        ++this.index;
-        this.pointPath.add(pt);
-    }
-
-    public Point checkLastPoint(){
-        return this.pointPath.peek();
-    }
-
-    public void removeLastPoint(){
-        --this.index;
-        this.pointPath.pop();
-    }
-
+    public void addPoint(Point pt){ this.pointPath.push(pt); }
+    public Point checkLastPoint(){ return this.pointPath.peek(); }
+    public void removeLastPoint() { this.pointPath.pop(); }
     public char getNextLetter(){
-        return this.word.charAt(this.index);
+        return this.word.charAt(this.pointPath.size());
     }
-
-    public int getIndex(){ return this.index;}
-
-    public int getWordLength() {return this.word.length();}
+    public boolean isComplete() {
+        return this.pointPath.size() == this.word.length();
+    }
+    public void setWord(String word) {this.word = word;}
 }

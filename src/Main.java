@@ -5,11 +5,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Main {
-    static ArrayList<HiddenWord> hiddenWords = new ArrayList<>();
+    static Stack<HiddenWord> hiddenWords = new Stack<>();
     public static void main(String[] args) {
         //Lit le contenu du fichier qui est pris en entrée et transforme celui-ci
         //en une ArrayList de mots cachés.
@@ -30,7 +30,7 @@ public class Main {
                 }
                 String[] words = reader.readLine().split(" ");
                 Arrays.sort(words);
-                hiddenWords.add(new HiddenWord(length, width, grid, words));
+                hiddenWords.push(new HiddenWord(length, width, grid, words));
             }
 
         } catch(IOException e) {
@@ -42,8 +42,8 @@ public class Main {
         for(HiddenWord h : hiddenWords){
             System.out.println("Query " + i + ":");
             System.out.println(h.solve());
-            //System.out.println("Average time for query in ms: " + doBenchmarkInMs(h));
             ++i;
+            //System.out.println("Average time for query in ms: " + doBenchmarkInMs(h));
         }
     }
 //    public static long doBenchmarkInMs(HiddenWord h){
