@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class Main {
+
     static Stack<HiddenWord> hiddenWords = new Stack<>();
+
     public static void main(String[] args) {
         //Lit le contenu du fichier qui est pris en entrée et transforme celui-ci
         //en une ArrayList de mots cachés.

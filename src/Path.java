@@ -7,6 +7,7 @@ import java.util.Stack;
 //Classe qui permet de sauvegarder les chemins trouvés et gérer
 //la recherche récursive à l'aide d'un Stack.
 public class Path {
+
     private final Stack<Point> pointPath;
     private String word;
 
@@ -14,16 +15,7 @@ public class Path {
         this.word = "";
         this.pointPath = new Stack<>();
     }
-    //Crée une copie du Path actuel ailleurs en mémoire pour le sauvegarder.
-    public Path copy(){
-        Path newPath = new Path();
-        newPath.setWord(this.word);
-        for(Point p : this.pointPath){
-            newPath.addPoint(p);
-        }
-        return newPath;
-    }
-    //Pretty printer pour respecter le format demandé.
+    //Pretty printer pour sauvegarder le path dans le format demandé.
     public String toString() {
         Stack<String> pts = new Stack<>();
         for(Point pt : this.pointPath){
@@ -41,4 +33,5 @@ public class Path {
         return this.pointPath.size() == this.word.length();
     }
     public void setWord(String word) {this.word = word;}
+
 }

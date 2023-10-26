@@ -7,11 +7,12 @@ import java.util.Stack;
 //Classe qui contient toutes les informations nécessaires à la résolution d'un mot caché
 //sous formes d'attributs. Elle contient aussi les méthodes nécessaires pour résoudre le mot caché.
 public class HiddenWord {
+
     private final int length;
     private final int width;
     private final char[][] grid;
     private final String[] words;
-    private final Stack<Path> paths;
+    private final Stack<String> savedPaths;
     private final Path tempPath;
 
     public HiddenWord(int length, int width, char[][] grid, String[] words){
@@ -19,54 +20,49 @@ public class HiddenWord {
         this.width = width;
         this.grid = grid;
         this.words = words;
-        this.paths = new Stack<>();
+        this.savedPaths = new Stack<>();
         this.tempPath = new Path();
     }
-    //Fonction principale qui résoud le mot caché et qui retourne tout les Paths sous formes
-    //de String formatté pour print. Pour chacun des mots, elle parcours la grille et lance
-    //la fonction récursive findPositionOfNextLetter() lorsque la première lettre du mot est trouvé.
+    //Fonction principale qui résout le mot caché et qui retourne tout les Paths sous formes
+    //de String formatté pour print. Pour chacun des mots, elle parcourt la grille et lance
+    //la fonction récursive findPositionOfNextLetter() lorsque la première lettre du mot est trouvée.
     public String solve() {
         for(String word : this.words){
-            tempPath.setWord(word);
+            this.tempPath.setWord(word);
             char firstLetter = word.charAt(0);
             for(int i = 0; i < this.length; ++i) {
                 for(int j = 0; j < this.width; ++j){
                     if (this.grid[i][j] == firstLetter) {
                         Point start = new Point(i, j);
-                        tempPath.addPoint(start);
+                        this.tempPath.addPoint(start);
                         findPositionOfNextLetter();
                     }
                 }
             }
         }
-        Stack<String> pathsToOutput = new Stack<>();
-        for(Path path : this.paths){
-            pathsToOutput.push(path.toString());
-        }
-        return String.join("\n", pathsToOutput);
+        return String.join("\n", this.savedPaths);
     }
-    //Utilise le Path global de la classe et trouve la position de la prochaine lettre dans le mot récursivement.
-    //Utilise "path" pour savoir à quelle lettre du mot et quelle position dans la grille nous sommes rendus.
+    //Fonction qui trouve la position de la prochaine lettre du mot dans la grille récursivement.
+    //Utilise l'attribut tempPath pour suivre la progression du mot et de la position dans la grille.
     //Le path est updaté pour que la récursion reste correcte, autant lorsqu'on s'enfonce que lorsqu'on remonte.
-    //Ajoute les Path trouvés dans l'attribut "paths" et ne retourne rien.
-
+    //Ajoute les Paths trouvés sous forme de String dans l'attribut "savedPaths" et ne retourne rien.
     public void findPositionOfNextLetter(){
-        if (tempPath.isComplete()){
-            this.paths.push(tempPath.copy());
-            tempPath.removeLastPoint();
+        if (this.tempPath.isComplete()){
+            this.savedPaths.push(this.tempPath.toString());
+            this.tempPath.removeLastPoint();
             return;
         }
-        for(Point neighbor: getNeighborsOfPoint(tempPath.checkLastPoint())){
-            if (this.grid[neighbor.getX()][neighbor.getY()] == tempPath.getNextLetter()){
-                tempPath.addPoint(neighbor);
+        for(Point neighbor: getNeighborsOfPoint(this.tempPath.checkLastPoint())){
+            if (this.grid[neighbor.getX()][neighbor.getY()] == this.tempPath.getNextLetter()){
+                this.tempPath.addPoint(neighbor);
                 findPositionOfNextLetter();
             }
         }
-        tempPath.removeLastPoint();
+        this.tempPath.removeLastPoint();
     }
     //Prend un Point en paramètre et retourne tous ses voisins incluant le point même,
     //en tenant compte de la longueur et la largeur de la grille pour ne pas avoir des index
-    //qui sont out of bounds. Retourne les voisins sous-forme de array de Point rempli.
+    //qui sont out of bounds. Retourne les voisins sous-forme de Point[] rempli.
     public Point[] getNeighborsOfPoint(Point pt){
         int x = pt.getX();
         int y = pt.getY();
