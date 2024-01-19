@@ -12,7 +12,7 @@ Object-oriented program for solving a hidden word grid. Given a list of distinct
 * Clone or download the project from this GitHub repository.
 * **Java Version :** OpenJDK version 20
 
-## How run
+## How to run
 
 1.  To run the project, make sure you have an Integrated Development Environment (IDE) installed.
 2.  Open the IDE, import the project, then locate the main class (Main) and the main method (main).
