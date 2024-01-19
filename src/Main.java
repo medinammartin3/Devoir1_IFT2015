@@ -15,8 +15,11 @@ public class Main {
     public static void main(String[] args) {
         //Lit le contenu du fichier qui est pris en entrée et transforme celui-ci
         //en une ArrayList de mots cachés.
+
+        String inputFilePath = "src/Input.txt";
+
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+            BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] splitLine = line.split(" ");
