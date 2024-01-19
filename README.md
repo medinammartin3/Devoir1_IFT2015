@@ -1,4 +1,4 @@
-`*`*La version en français suit la version en anglais*`*`
+`*`*La version en français suit la version en anglais*`*`  
 `*`*French version follows*`*`
 
 # Hidden words game solver
