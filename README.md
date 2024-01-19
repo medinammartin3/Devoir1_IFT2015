@@ -10,7 +10,7 @@ Object-oriented program for solving a hidden word grid. Given a list of distinct
 ## How to Install
 
 * Clone or download the project from this GitHub repository.
-* **Java Version**: OpenJDK version 20
+* **Java Version :** OpenJDK version 20
 
 ## How run
 
@@ -42,7 +42,7 @@ Programme orienté objet pour résoudre une grille de mots cachés. Étant d
 ## Comment installer
 
 * Cloner ou télécharger le projet depuis ce dépôt GitHub.
-* **Version Java** : OpenJDK version 20
+* **Version Java :** OpenJDK version 20
 
 ## Comment exécuter
 
