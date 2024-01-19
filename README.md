@@ -22,7 +22,7 @@ The project already includes some examples of possible inputs:
 
 * `Input.txt`
 
-If you want to create your own inputs, make sure to follow the format of the provided inputs. Additionally, you need to modify the file name in the `inputFilePath` variable located in the Main.java file.
+*-* If you want to create your own inputs, make sure to follow the format of the provided inputs. Additionally, you need to modify the file name in the `inputFilePath` variable located in the Main.java file.
 
 ## Credits
 
@@ -54,7 +54,7 @@ Le projet inclus déjà quelques exemples d'entrées possibles :
 
 * `Input.txt`
 
-Si vous voulez créer vos propres entrées, assurez vous de respecter le format des entrées déjà fournies. De plus, vous devez modifier le nom du fichier dans la variable `inputFilePath` situé dans le fichier Main.java.
+*-* Si vous voulez créer vos propres entrées, assurez vous de respecter le format des entrées déjà fournies. De plus, vous devez modifier le nom du fichier dans la variable `inputFilePath` situé dans le fichier Main.java.
 
 
 ## Crédits
