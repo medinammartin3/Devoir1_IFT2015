@@ -26,7 +26,7 @@ If you want to create your own inputs, make sure to follow the format of the pro
 
 ## Credits
 
-This project is a practical work for the course IFT2015 (Data Structures). It was made in collaboration with Étienne Mitchell-Bouchard.
+This project is a practical work for the course IFT2015 (Data Structures). It was made in collaboration with [Étienne Mitchell-Bouchard](https://github.com/DarkZant).
 
 <br><br>
 ___
@@ -59,4 +59,4 @@ Si vous voulez créer vos propres entrées, assurez vous de respecter le format 
 
 ## Crédits
 
-Ce projet ce projet est un travail pratique du cours IFT2015 (Structures de données). Il a été effectué en groupe avec Étienne Mitchell-Bouchard.
+Ce projet ce projet est un travail pratique du cours IFT2015 (Structures de données). Il a été effectué en groupe avec [Étienne Mitchell-Bouchard](https://github.com/DarkZant).
