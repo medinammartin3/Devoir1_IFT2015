@@ -3,6 +3,8 @@
 
 # Hidden words game solver
 
+***Date :** Fall 2023*
+
 ## Description
 
 Object-oriented program for solving a hidden word grid. Given a list of distinct lowercase words and a grid, the program finds all possible words from the list provided that can be formed by traversing adjacent characters on the grid.
@@ -34,6 +36,8 @@ ___
 <br>
 
 # Résolution de grilles de mots cachés
+
+***Date :** Automne 2023*
 
 ## Description
 
